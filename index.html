@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>microWiki</title>
+
+  <!-- Building blocks -->
+  <link rel="stylesheet" href="shared/style/action_menu.css">
+  <link rel="stylesheet" href="shared/style/drawer.css">
+  <link rel="stylesheet" href="shared/style/confirm.css">
+  <link rel="stylesheet" href="shared/style/headers.css">
+  <link rel="stylesheet" href="shared/style/input_areas.css">
+  <link rel="stylesheet" href="shared/style/switches.css">
+  <link rel="stylesheet" href="shared/style/toolbars.css">
+  <link rel="stylesheet" href="shared/icons/styles/action_icons.css">
+  <link rel="stylesheet" href="shared/icons/styles/media_icons.css">
+  <link rel="stylesheet" href="shared/icons/styles/comms_icons.css">
+  <link rel="stylesheet" href="shared/icons/styles/settings_icons.css">
+  <link rel="stylesheet" href="shared/style/transitions.css">
+  <link rel="stylesheet" href="shared/style/util.css">
+  <link rel="stylesheet" href="shared/style/cross_browser.css">
+  
+  <link rel="stylesheet" href="css/application.css">
+  <!-- Localization -->
+  <link rel="resource" type="application/l10n" href="locales/locales.ini" />
+  <script type="application/javascript" defer src="shared/js/l10n.js"></script>
+	  
+</head>
+<body>
+	<section id="index" data-position="current">
+		<section data-type="sidebar">
+			<header>
+				<menu type="toolbar">
+					<a href="#" data-l10n-id="close">Close</a>
+				</menu>
+			</header>
+			<nav>
+				<ul>
+					<li><a id="btn-settings-open" href="#" data-l10n-id="settings">Settings</a></li>
+					<li><a id="btn-help-open" href="#" data-l10n-id="help">Help</a></li>
+				</ul>
+			</nav>
+		</section>
+		<section id="drawer" role="region">
+			<header class="fixed">
+				<a href="#"><span class="icon icon-menu">hide sidebar</span></a>
+				<a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+		        <menu type="toolbar">
+		        	<a id="btn-editor-open" href="#"><span class="icon icon-compose">edit</span></a>
+		        </menu>
+				<h1>microWiki</h1>
+			</header>
+			<article class="content scrollable header">
+				<section id="wikiContent">
+				</section>
+				<div role="toolbar">
+					<ul>
+						<li><button class="action-icon browser-back" id="btn-back-to-start">Back to Start</button></li>
+					</ul>
+					<ul>
+						<li><button class="action-icon delete" id="btn-delete-entry">Delete</button></li>
+						<!--li><button class="action-icon new">New page</button></li/-->
+					</ul>
+				</div>
+			</article>
+		</section>
+	</section>
+	
+	<!--··························· Content Editor ···························-->
+	<section role="region" id="editor" data-position="right">
+    	<header class="fixed">
+	    	<a id="btn-editor-back" href="#"><span class="icon icon-back">back</span></a>
+	    	<h1>Editor</h1>
+	    </header>
+	    <article class="content scrollable header">
+	    	<textarea id="editorContent" placeholder="(please put in your content...)" required></textarea>
+			<div role="toolbar">
+				<ul>
+					<li></li>
+				</ul>
+				<ul>
+					<li><button id="btn-save-it" class="action-icon download">Save</button></li>
+				</ul>
+			</div>
+	    </article>
+    </section>
+	<!--··························· Settings ···························-->
+	<section role="region" id="settings" data-position="right">
+    	<header class="fixed">
+	    	<a id="btn-settings-back" href="#"><span class="icon icon-back">back</span></a>
+	    	<h1 data-l10n-id="settings">Settings</h1>
+	    </header>
+	    <article class="content scrollable header">
+		    <header><h2 data-l10n-id="settings-header-syntax">Code syntax</h2></header>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-header-syntax-wikicode">WikiCode</label>
+			    <input type="radio" name="selected_syntax" id="selected_syntax_wikiCode" value="wikiCode" >
+			    <span></span>
+			</label>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-header-syntax-bbcode">BBCode</label>
+			    <input type="radio" name="selected_syntax" id="selected_syntax_bbCode" value="bbCode">
+			    <span></span>
+			</label>
+		    <header><h2 data-l10n-id="settings-header-style">Header style</h2></header>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-header-style-orange">Standard (orange)</label>
+			    <input type="radio" name="selected_theme" id="selected_theme_normal" value="normal">
+			    <span></span>
+			</label>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-header-style-dark">Dark</label>
+			    <input type="radio" name="selected_theme" id="selected_theme_dark" value="dark" >
+			    <span></span>
+			</label>
+		    <!--label class="pack-radio">
+		    	Bright
+			    <input type="radio" name="selected_theme" id="selected_theme_organic" value="organic">
+			    <span></span>
+			</label/-->
+		    <header><h2 data-l10n-id="settings-content-style">Content style</h2></header>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-content-style-standard">Standard <em data-l10n-id="settings-content-style-standard-em">(black on white)</em></label>
+			    <input type="radio" name="selected_content_theme" id="selected_content_theme_normal" value="normal">
+			    <span></span>
+			</label>
+		    <label class="pack-radio">
+		    	<label data-l10n-id="settings-content-style-night">Night <em data-l10n-id="settings-content-style-night-em">(grey on black)</em></label>
+			    <input type="radio" name="selected_content_theme" id="selected_content_theme_night" value="night">
+			    <span></span>
+			</label>
+	    </article>
+    </section>
+	<!--·························· deleteconfirm ··························-->
+	<section id="delete-confirm" data-position="back" class="fullscreen">
+		<form role="dialog" data-type="confirm">
+			<section>
+				<h1 data-l10n-id="delete-confirm-h1">Really?!</h1>
+				<p data-l10n-id="delete-confirm-question">Do you really want to delete this entry?</p>
+			</section>
+			<menu>
+				<button id="btn-cancel-delete" data-l10n-id="cancel">Cancel</button>
+				<button id="btn-confirm-delete" class="danger" data-l10n-id="delete">Delete</button>
+			</menu>
+		</form>
+	</section>
+	<!--·························· saveconfirm ··························-->
+	<section id="save-confirm" data-position="back" class="fullscreen">
+		<form role="dialog" data-type="confirm">
+			<section>
+				<h1 data-l10n-id="save-confirm-h1">The content has changed...</h1>
+				<p data-l10n-id="save-confirm-question">Do you want to save the changes?</p>
+			</section>
+			<menu>
+				<button id="btn-cancel-save" data-l10n-id="discard">Discard</button>
+				<button id="btn-do-the-saving" class="danger" data-l10n-id="save-confirm-yes">Yes, save</button>
+			</menu>
+		</form>
+	</section>
+  
+
+	<script type="application/javascript" defer src="shared/js/status.js"></script>
+	<script type="application/javascript" defer src="shared/js/seekbars.js"></script>
+	
+	<script type="application/javascript" defer src="js/bbcode.js"></script>
+	<script type="application/javascript" defer src="shared/js/creole.js"></script>
+	<script type="application/javascript" defer src="js/codeandcreateStorage.js"></script>
+	<script type="application/javascript" defer src="js/application.js"></script>
+
+</body>
+</html>
+
